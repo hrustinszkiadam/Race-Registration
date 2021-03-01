@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Super Running Race</title>
+    <title>Race Registration</title>
     <style>
         body {
             text-align: center;
@@ -15,22 +15,28 @@
         a {
             text-decoration: none;
             color: black;
-            padding: .5em;
+            padding: .5em 1em;
             border-radius: 20px;
+            margin-top: 25px;
+            margin-bottom: 25px;
         }
         a:hover {
             background-color: rgba(150, 150, 150, .6);
         }
-        h3 {
+        h3, div {
             margin-top: 50px;
         }
     </style>
 </head>
 <body>
-    <h1>SUPER RUNNING RACE</h1>
-    <h2><a href="register.html">Register Now</a></h2>
-    <h3>Are you registered already?</h3>
-    <span>Here are some useful informations about the race: </span>
-    <a href="informations.html"> Informations</a>
+    <h1>Registered !</h1>
+    <p>Thank you for registering to <br> Super Running Race!</p>
+    <div>
+        <p>You are registered as: <%= racers[racers.length - 1].name %></p>
+        <p>With the email: <%= racers[racers.length - 1].email %></p>
+        <p>For the run: <%= racers[racers.length - 1].runLength %></p>
+    </div>
+    <p><a href="/">Go To Home</a></p>
+    <p><a href="/register">Register a New Runner</a></p>
 </body>
 </html>

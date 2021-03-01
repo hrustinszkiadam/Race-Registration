@@ -2,10 +2,23 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 
+app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 const encodedParser = bodyParser.urlencoded({ extended: false });
 let racers = new Array;
+
+app.get("/", (req, res) => {
+    res.render("index");
+});
+
+app.get("/informations", (req, res) => {
+    res.render("informations");
+});
+
+app.get("/register", (req, res) => {
+    res.render("register");
+});
 
 app.post("/register", encodedParser, (req, res) => {
     const postReq = req.body;
@@ -16,9 +29,11 @@ app.post("/register", encodedParser, (req, res) => {
         age: postReq.age,
         runLength: postReq.runLength
     });
-    res.redirect("registered.html");
+    res.render("registered", { racers });
 });
 
-module.exports = racers;
+app.use((req, res) => {
+    res.status(404).render("404");
+});
 
 app.listen(3000);
