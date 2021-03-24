@@ -13,7 +13,8 @@ app.get("/", (req, res) => {
 });
 
 app.get("/informations", (req, res) => {
-    res.render("informations");
+    if(req.query.a != null && req.query.a == "true") res.render("admin-informations");
+    else res.render("informations");
 });
 
 app.get("/register", (req, res) => {
